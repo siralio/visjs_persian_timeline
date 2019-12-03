@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Timeline</title>
+
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+   <meta charset="UTF-8">
+
+  <!-- Load jquery for ajax support -->
+  <script src="../lib/jquery/jquery.js"></script>
+
+  <!--<script type="text/javascript" src="../lib/jquery.calendars/js/jquery.plugin.min.js"></script>
+  <script type="text/javascript" src="../lib/jquery.calendars/js/jquery.calendars.js"></script>
+  <script type="text/javascript" src="../lib/jquery.calendars/js/jquery.calendars.plus.js"></script>
+  <script type="text/javascript" src="../lib/jquery.calendars/js/jquery.calendars.julian.js"></script>
+  <script type="text/javascript" src="../lib/jquery.calendars/js/jquery.calendars.persian.js"></script>
+  <script type="text/javascript" src="../lib/jquery.calendars/js/jquery.calendars.persian-fa.js"></script>-->
+  
+  <script type="text/javascript" src="../lib/persian-date/dist/persian-date.js"></script>
+  <script type="text/javascript" src="../lib/jalali_helper.js"></script>
+
+  <script src="./persian_dates_data.js"></script>
+  <script src="../dist/vis.js"></script>
+  <link href="../dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<br>
+<div id="visualization"></div>
+<div id="loading">loading...</div>
+
+<script type="text/javascript">
+
+  // *** Google Chrome ***
+  
+  function doShow (data) {
+      // hide the "loading..." message
+      document.getElementById('loading').style.display = 'none';
+
+      // DOM element where the Timeline will be attached
+      var container = document.getElementById('visualization');
+
+      // Create a DataSet (allows two way data-binding)
+      var items = new vis.DataSet(data);
+
+      // Configuration for the Timeline
+      var options = {};
+
+      // Create a Timeline
+      var timeline = new vis.Timeline(container, items, options);
+  }
+
+doShow(jsonData);
+
+</script>
+</body>
+</html>
